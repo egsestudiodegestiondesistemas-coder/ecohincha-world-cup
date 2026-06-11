@@ -175,10 +175,7 @@ emisiones_movilidad = (distancia * factor) / personas
 
 st.subheader("Resultado preliminar de movilidad")
 
-st.metric(
-    label="Huella de carbono por movilidad",
-    value=f"{emisiones_movilidad:.2f} kg CO₂e"
-)
+st.info(f"Huella de carbono por movilidad: {emisiones_movilidad:.2f} kg CO₂e")
 
 if emisiones_movilidad == 0:
     st.success("Tu movilidad no generó emisiones directas de CO₂e.")
@@ -249,10 +246,7 @@ emisiones_energia = energia_total_kwh * factor_electricidad
 
 st.subheader("Resultado preliminar de energía")
 
-st.metric(
-    label="Huella de carbono por energía",
-    value=f"{emisiones_energia:.2f} kg CO₂e"
-)
+st.info(f"Huella de carbono por energía: {emisiones_energia:.2f} kg CO₂e")
 
 st.write(f"Consumo eléctrico estimado: {energia_total_kwh:.2f} kWh")
 st.header("🍔 MÓDULO 3 | ALIMENTACIÓN Y CONSUMO")
@@ -316,10 +310,7 @@ emisiones_alimentacion = emisiones_comida + emisiones_bebidas
 
 st.subheader("Resultado preliminar de alimentación y consumo")
 
-st.metric(
-    label="Huella de carbono por alimentación y consumo",
-    value=f"{emisiones_alimentacion:.2f} kg CO₂e"
-)
+st.info(f"Huella de carbono por energía: {emisiones_energia:.2f} kg CO₂e")
 
 st.write(f"Emisiones por comida: {emisiones_comida:.2f} kg CO₂e")
 st.write(f"Emisiones por bebidas/envases: {emisiones_bebidas:.2f} kg CO₂e")
@@ -402,10 +393,7 @@ residuos_totales = plasticos + latas + vidrio + carton + organicos
 
 st.subheader("Resultado preliminar de residuos")
 
-st.metric(
-    label="Huella de carbono por residuos",
-    value=f"{emisiones_residuos:.2f} kg CO₂e"
-)
+st.info(f"Huella de carbono por energía: {emisiones_energia:.2f} kg CO₂e")
 
 st.write(f"Residuos generados: {residuos_totales} unidades aproximadas")
 st.header("🌎 RESULTADO FINAL | HUELLA AMBIENTAL DEL PARTIDO")
@@ -444,15 +432,9 @@ eco_score = max(
     )
 )
 
-st.metric(
-    label="HUELLA TOTAL ESTIMADA",
-    value=f"{emisiones_totales:.2f} kg CO₂e"
-)
+st.info(f"Huella de carbono por energía: {emisiones_energia:.2f} kg CO₂e")
 
-st.metric(
-    label="HUELLA POR PERSONA",
-    value=f"{emisiones_por_persona:.2f} kg CO₂e/persona"
-)
+st.info(f"Huella de carbono por energía: {emisiones_energia:.2f} kg CO₂e")
 st.markdown(f"""
 <div style="
 background-color:#D8E7B8;
@@ -628,16 +610,11 @@ energia_pct = (emisiones_energia / emisiones_totales * 100) if emisiones_totales
 alimentacion_pct = (emisiones_alimentacion / emisiones_totales * 100) if emisiones_totales > 0 else 0
 residuos_pct = (emisiones_residuos / emisiones_totales * 100) if emisiones_totales > 0 else 0
 
-col1, col2 = st.columns(2)
-
-with col1:
-    st.metric("Movilidad", f"{movilidad_pct:.1f}%")
-    st.metric("Energía", f"{energia_pct:.1f}%")
-
-with col2:
-    st.metric("Alimentación", f"{alimentacion_pct:.1f}%")
-    st.metric("Residuos", f"{residuos_pct:.1f}%")
-    st.subheader("📊 Comparación EcoHincha")
+st.info(f"Movilidad: {movilidad_pct:.1f}%")
+st.info(f"Energía: {energia_pct:.1f}%")
+st.info(f"Alimentación: {alimentacion_pct:.1f}%")
+st.info(f"Residuos: {residuos_pct:.1f}%")
+st.subheader("📊 Comparación EcoHincha")
 
 if categoria_ecohincha == "EcoHincha A+":
     comparacion_texto = "Tu resultado se ubica en el nivel más alto de desempeño ambiental. La huella por persona es baja y el comportamiento registrado es altamente recomendable para próximos partidos."
@@ -825,10 +802,7 @@ elif puntaje <= 80:
 else:
     perfil = "EcoHincha Mundial™"
 
-st.metric(
-    label="EcoScore Mundial™",
-    value=f"{puntaje}/100"
-)
+st.info(f"Huella de carbono por energía: {emisiones_energia:.2f} kg CO₂e")
 
 st.markdown(f"""
 <div style="
@@ -1014,4 +988,5 @@ Herramienta educativa de estimación de huella ambiental para eventos deportivos
 
 if st.button("Iniciar nueva medición"):
     st.rerun()
-    st.header("🌎 RESULTADO FINAL | HUELLA AMBIENTAL DEL PARTIDO")
+
+st.header("🌎 RESULTADO FINAL | HUELLA AMBIENTAL DEL PARTIDO")
