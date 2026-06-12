@@ -187,11 +187,11 @@ dispositivo = st.selectbox(
     ]
 )
 
-horas_uso = st.number_input(
-    "¿Cuántas horas estuvo encendido el dispositivo?",
+horas_tv = st.number_input(
+    "¿Cuántas horas estuvo encendido el televisor durante el partido?",
     min_value=0.0,
-    value=2.0,
-    step=0.5
+    value=0.0,
+    step=0.1
 )
 
 uso_aire = st.checkbox("¿Usaron aire acondicionado?")
@@ -248,10 +248,16 @@ tipo_comida = st.selectbox(
         "Comida casera",
         "Delivery",
         "Asado",
-        "Picada"
+        "Picada",
+        "Otro"
     ]
 )
+detalle_comida = ""
 
+if tipo_comida == "Otro":
+    detalle_comida = st.text_input(
+        "Especificá qué consumieron"
+    )
 if tipo_comida == "No consumimos comida":
     personas_comida = 0
     st.info("No se registró consumo de alimentos.")
@@ -286,6 +292,7 @@ factores_comida = {
     "Delivery": 1.80,
     "Asado": 4.50,
     "Picada": 2.20
+    "Otro": 1.20
 }
 
 factores_bebidas = {
