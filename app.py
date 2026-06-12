@@ -426,19 +426,21 @@ organicos = st.number_input(
     value=0
 )
 
-separacion = st.radio(
+separacion = st.selectbox(
     "¿Separaste los residuos?",
-    ["Sí", "No"]
+    ["Seleccionar", "Sí", "No"]
 )
 
-reciclaje = st.radio(
+reciclaje = st.selectbox(
     "¿Los materiales reciclables fueron enviados a reciclaje?",
-    ["Sí", "No"]
+    ["Seleccionar", "Sí", "No"]
 )
 
-compostaje = st.radio(
+compostaje = st.selectbox(
     "¿Los residuos orgánicos fueron compostados?",
-    ["Sí", "No"])
+    ["Seleccionar", "Sí", "No"]
+)
+
 factor_plastico = 0.08
 factor_lata = 0.05
 factor_vidrio = 0.04
