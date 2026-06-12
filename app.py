@@ -226,7 +226,7 @@ potencias_dispositivo = {
 
 factor_electricidad = 0.30
 
-energia_dispositivo = potencias_dispositivo[dispositivo] * horas_uso
+energia_dispositivo = potencias_dispositivo[dispositivo] * horas_tv
 energia_aire = 1.50 * horas_aire
 energia_calefaccion = 2.00 * horas_calefaccion
 
