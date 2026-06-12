@@ -691,16 +691,36 @@ st.info(f"Alimentación: {alimentacion_pct:.1f}%")
 st.info(f"Residuos: {residuos_pct:.1f}%")
 st.subheader("📊 Comparación EcoHincha")
 
-if categoria_ecohincha == "EcoHincha A+":
-    comparacion_texto = "Tu resultado se ubica en el nivel más alto de desempeño ambiental. La huella por persona es baja y el comportamiento registrado es altamente recomendable para próximos partidos."
-elif categoria_ecohincha == "EcoHincha A":
-    comparacion_texto = "Tu resultado muestra un buen desempeño ambiental. La huella por persona se mantiene en un rango controlado."
-elif categoria_ecohincha == "EcoHincha B":
-    comparacion_texto = "Tu resultado se encuentra en un nivel intermedio. Hay prácticas positivas, pero también fuentes de emisión que pueden reducirse."
-elif categoria_ecohincha == "EcoHincha C":
-    comparacion_texto = "Tu resultado indica una huella significativa. Se recomienda aplicar mejoras concretas en el próximo partido."
+recomendaciones = []
+
+if transporte in ["Auto", "Moto", "Taxi/Uber"]:
+    recomendaciones.append("Reducir el uso de movilidad motorizada individual o compartir el viaje con otras personas.")
+elif transporte == "Colectivo":
+    recomendaciones.append("El uso de transporte público reduce la huella por persona frente al vehículo particular.")
 else:
-    comparacion_texto = "Tu resultado se ubica en un nivel alto de impacto. Las decisiones de movilidad, consumo y residuos deberían revisarse como prioridad."
+    recomendaciones.append("La movilidad activa no generó emisiones directas. Mantener este hábito cuando sea posible.")
+
+if energia_pct > 30:
+    recomendaciones.append("Reducir el tiempo de uso de dispositivos o priorizar equipos de menor consumo energético.")
+
+if uso_aire:
+    recomendaciones.append("Optimizar el uso del aire acondicionado durante el partido para disminuir el consumo eléctrico.")
+
+if tipo_comida == "Asado":
+    recomendaciones.append("El consumo de asado representa una fuente relevante de emisiones. Alternar con opciones de menor impacto.")
+elif tipo_comida == "Delivery":
+    recomendaciones.append("Reducir envases y traslados asociados al delivery puede disminuir la huella del evento.")
+elif tipo_comida == "No consumimos comida":
+    recomendaciones.append("No se registró consumo de alimentos, por lo que este componente no aportó emisiones.")
+
+if separacion == "No":
+    recomendaciones.append("Separar los residuos generados permite mejorar su recuperación y reducir impactos.")
+if reciclaje == "No":
+    recomendaciones.append("Enviar materiales reciclables a reciclaje mejora el desempeño ambiental del evento.")
+if compostaje == "No":
+    recomendaciones.append("Compostar residuos orgánicos reduce la cantidad enviada a disposición final.")
+
+comparacion_texto = "Según tus respuestas, las acciones prioritarias son: " + " ".join(recomendaciones[:3])
 
 st.markdown(f"""
 <div style="
