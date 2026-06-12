@@ -98,30 +98,15 @@ Al finalizar obtendrás:
 st.info("Comenzaremos con el módulo de movilidad.")
 st.header("📍 DATOS DE LA MEDICIÓN")
 
-nombre_usuario = st.text_input(
-    "Nombre o identificación",
-    value="Usuario anónimo"
-)
+nombre_usuario = st.text_input("Nombre o identificación")
 
-ciudad = st.text_input(
-    "Ciudad",
-    value="San Francisco"
-)
+ciudad = st.text_input("Ciudad")
 
-provincia = st.text_input(
-    "Provincia / Estado",
-    value="Córdoba"
-)
+provincia = st.text_input("Provincia / Estado")
 
-pais = st.text_input(
-    "País",
-    value="Argentina"
-)
+pais = st.text_input("País")
 
-partido = st.text_input(
-    "Partido evaluado",
-    value="Argentina vs Rival"
-)
+partido = st.text_input("Partido evaluado")
 
 st.header("🚗 MÓDULO 1 | MOVILIDAD DEL HINCHA")
 
