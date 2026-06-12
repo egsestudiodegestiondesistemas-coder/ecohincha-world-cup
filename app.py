@@ -715,8 +715,6 @@ if tipo_comida == "Asado":
     recomendaciones.append("El consumo de asado representa una fuente relevante de emisiones. Alternar con opciones de menor impacto.")
 elif tipo_comida == "Delivery":
     recomendaciones.append("Reducir envases y traslados asociados al delivery puede disminuir la huella del evento.")
-elif tipo_comida == "No consumimos comida":
-    recomendaciones.append("No se registró consumo de alimentos, por lo que este componente no aportó emisiones.")
 
 if separacion == "No":
     recomendaciones.append("Separar los residuos generados permite mejorar su recuperación y reducir impactos.")
@@ -725,8 +723,20 @@ if reciclaje == "No":
 if compostaje == "No":
     recomendaciones.append("Compostar residuos orgánicos reduce la cantidad enviada a disposición final.")
 
-comparacion_texto = "Según tus respuestas, las acciones prioritarias son: " + " ".join(recomendaciones[:3])
+if categoria_ecohincha == "EcoHincha A+":
+    comparacion_texto = "Tu nivel EcoHincha indica un desempeño ambiental muy alto. Según tus respuestas, la experiencia evaluada registró una huella muy baja o nula."
 
+elif categoria_ecohincha == "EcoHincha A":
+    comparacion_texto = "Tu nivel EcoHincha indica un buen desempeño ambiental. La huella registrada se mantiene en un rango bajo para este tipo de experiencia."
+
+elif categoria_ecohincha == "EcoHincha B":
+    comparacion_texto = "Tu nivel EcoHincha indica un desempeño ambiental intermedio. Se identifican algunos aspectos con oportunidad de mejora."
+
+elif categoria_ecohincha == "EcoHincha C":
+    comparacion_texto = "Tu nivel EcoHincha indica una huella ambiental significativa. Se recomienda revisar las principales fuentes de emisión registradas."
+
+else:
+    comparacion_texto = "Tu nivel EcoHincha indica una huella ambiental alta. Las decisiones de movilidad, consumo energético, alimentación o residuos aumentaron el impacto total del evento."
 st.markdown(f"""
 <div style="
 background-color:#13362F;
