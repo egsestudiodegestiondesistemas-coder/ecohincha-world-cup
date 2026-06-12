@@ -631,28 +631,33 @@ st.subheader("Recomendaciones prioritarias para el próximo partido")
 
 recomendaciones = []
 
-if categoria_principal == "Movilidad":
-    recomendaciones.append("Compartir vehículo o utilizar transporte público.")
-    recomendaciones.append("Reducir traslados innecesarios antes y después del partido.")
-    recomendaciones.append("Elegir un punto de encuentro cercano para disminuir kilómetros recorridos.")
+recomendaciones = []
 
-elif categoria_principal == "Energía":
-    recomendaciones.append("Reducir el uso de aire acondicionado o calefacción durante el partido.")
-    recomendaciones.append("Ver el partido en grupo para repartir el consumo energético por persona.")
-    recomendaciones.append("Apagar equipos, luces y climatización al finalizar.")
+if transporte in ["Auto", "Moto", "Taxi/Uber"]:
+    recomendaciones.append("Reducir el uso de vehículos individuales o compartir el viaje.")
 
-elif categoria_principal == "Alimentación y consumo":
-    recomendaciones.append("Reducir alimentos de alta huella ambiental.")
-    recomendaciones.append("Priorizar comida casera, local y con menor cantidad de envases.")
-    recomendaciones.append("Evitar delivery y descartables cuando sea posible.")
+if uso_aire:
+    recomendaciones.append("Optimizar el uso del aire acondicionado para disminuir el consumo energético.")
 
-elif categoria_principal == "Residuos":
-    recomendaciones.append("Separar residuos reciclables durante el partido.")
-    recomendaciones.append("Evitar vasos, platos y cubiertos descartables.")
-    recomendaciones.append("Compostar residuos orgánicos si es posible.")
+if tipo_comida == "Asado":
+    recomendaciones.append("Reducir el consumo de carne vacuna para disminuir la huella alimentaria.")
 
-for rec in recomendaciones:
-    st.write(f"✅ {rec}")
+if tipo_comida == "Delivery":
+    recomendaciones.append("Reducir pedidos con envases descartables y traslados asociados.")
+
+if separacion == "No":
+    recomendaciones.append("Implementar separación de residuos en origen.")
+
+if reciclaje == "No":
+    recomendaciones.append("Enviar materiales reciclables a sistemas de recuperación.")
+
+if compostaje == "No":
+    recomendaciones.append("Compostar residuos orgánicos para reducir residuos enviados a disposición final.")
+
+if recomendaciones:
+    st.subheader("Recomendaciones prioritarias para el próximo partido")
+    for rec in recomendaciones:
+        st.write(f"✅ {rec}")
 st.subheader("Distribución de la huella por categoría")
 
 datos_grafico = pd.DataFrame({
