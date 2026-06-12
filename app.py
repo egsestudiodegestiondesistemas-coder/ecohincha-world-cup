@@ -1012,9 +1012,7 @@ y mejora de hábitos sostenibles en eventos deportivos.
 
 <h4>Recomendaciones prioritarias</h4>
 <ul>
-<li>{recomendaciones[0]}</li>
-<li>{recomendaciones[1]}</li>
-<li>{recomendaciones[2]}</li>
+{''.join([f'<li>{rec}</li>' for rec in recomendaciones])}
 </ul>
 
 </div>
