@@ -258,12 +258,14 @@ dispositivo = st.selectbox(
     ]
 )
 
-horas_tv = st.number_input(
-    "¿Cuántas horas estuvo encendido el televisor durante el partido?",
-    min_value=0.0,
-    value=0.0,
-    step=0.1
+minutos_tv = st.number_input(
+    "¿Cuántos minutos utilizaste este dispositivo durante el partido? (90 minutos = partido completo)",
+    min_value=0,
+    value=0,
+    step=5
 )
+
+horas_tv = minutos_tv / 60
 
 uso_aire = st.checkbox("¿Usaron aire acondicionado?")
 horas_aire = 0.0
