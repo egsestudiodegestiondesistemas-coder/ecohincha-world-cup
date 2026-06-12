@@ -810,30 +810,7 @@ margin-top:20px;
 st.subheader("🏅 Certificación Ambiental")
 st.subheader("🔎 Calidad de la medición")
 
-confiabilidad = 100
 
-if personas <= 1:
-    confiabilidad -= 10
-
-if distancia <= 0:
-    confiabilidad -= 15
-
-if personas_comida <= 0:
-    confiabilidad -= 15
-
-if residuos_totales <= 0:
-    confiabilidad -= 15
-
-if confiabilidad >= 90:
-    nivel_confiabilidad = "Alta"
-elif confiabilidad >= 70:
-    nivel_confiabilidad = "Media"
-else:
-    nivel_confiabilidad = "Baja"
-
-st.info(
-    f"Confiabilidad de la estimación: {nivel_confiabilidad} ({confiabilidad}%)"
-)
 
 st.success(
     f"""
