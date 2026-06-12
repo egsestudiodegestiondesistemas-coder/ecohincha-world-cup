@@ -291,7 +291,7 @@ factores_comida = {
     "Comida casera": 1.20,
     "Delivery": 1.80,
     "Asado": 4.50,
-    "Picada": 2.20
+    "Picada": 2.20,
     "Otro": 1.20
 }
 
