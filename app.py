@@ -106,7 +106,78 @@ provincia = st.text_input("Provincia / Estado")
 
 pais = st.text_input("País")
 
-partido = st.text_input("Partido evaluado")
+st.subheader("⚽ Partido evaluado")
+
+equipos_mundial = [
+    "Seleccionar equipo",
+    "Argentina",
+    "Alemania",
+    "Arabia Saudita",
+    "Argelia",
+    "Australia",
+    "Austria",
+    "Bélgica",
+    "Bosnia y Herzegovina",
+    "Brasil",
+    "Canadá",
+    "Cabo Verde",
+    "Colombia",
+    "Corea del Sur",
+    "Costa de Marfil",
+    "Croacia",
+    "Curazao",
+    "Ecuador",
+    "Egipto",
+    "Escocia",
+    "España",
+    "Estados Unidos",
+    "Francia",
+    "Ghana",
+    "Haití",
+    "Inglaterra",
+    "Irak",
+    "Irán",
+    "Japón",
+    "Jordania",
+    "Marruecos",
+    "México",
+    "Noruega",
+    "Nueva Zelanda",
+    "Países Bajos",
+    "Panamá",
+    "Paraguay",
+    "Portugal",
+    "Qatar",
+    "RD Congo",
+    "República Checa",
+    "Senegal",
+    "Sudáfrica",
+    "Suecia",
+    "Suiza",
+    "Túnez",
+    "Turquía",
+    "Uruguay",
+    "Uzbekistán"
+]
+
+equipo_1 = st.selectbox(
+    "Equipo 1",
+    equipos_mundial
+)
+
+equipo_2 = st.selectbox(
+    "Equipo 2",
+    equipos_mundial
+)
+
+if (
+    equipo_1 != "Seleccionar equipo"
+    and equipo_2 != "Seleccionar equipo"
+    and equipo_1 != equipo_2
+):
+    partido = f"{equipo_1} vs {equipo_2}"
+else:
+    partido = ""
 
 st.header("🚗 MÓDULO 1 | MOVILIDAD DEL HINCHA")
 
