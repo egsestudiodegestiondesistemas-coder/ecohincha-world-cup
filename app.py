@@ -140,11 +140,15 @@ distancia = st.number_input(
     value=0.0
 )
 
-personas = st.number_input(
-    "¿Cuántas personas viajaban en el vehículo?",
-    min_value=1,
-    value=1
-)
+if transporte in ["Caminando", "Bicicleta"]:
+    personas = 1
+    st.info("Movilidad no motorizada.")
+else:
+    personas = st.number_input(
+        "¿Cuántas personas viajaban en el vehículo?",
+        min_value=1,
+        value=1
+    )
 factores_transporte = {
     "Caminando": 0.0,
     "Bicicleta": 0.0,
@@ -248,11 +252,15 @@ tipo_comida = st.selectbox(
     ]
 )
 
-personas_comida = st.number_input(
-    "¿Cuántas personas consumieron comida?",
-    min_value=1,
-    value=1
-)
+if tipo_comida == "No consumimos comida":
+    personas_comida = 0
+    st.info("No se registró consumo de alimentos.")
+else:
+    personas_comida = st.number_input(
+        "¿Cuántas personas consumieron comida?",
+        min_value=1,
+        value=1
+    )
 
 bebidas = st.selectbox(
     "¿Qué bebidas consumieron principalmente?",
@@ -295,7 +303,7 @@ emisiones_alimentacion = emisiones_comida + emisiones_bebidas
 
 st.subheader("Resultado preliminar de alimentación y consumo")
 
-st.info(f"Huella de carbono por energía: {emisiones_energia:.2f} kg CO₂e")
+st.info(f"Huella de carbono por alimentación y consumo: {emisiones_alimentacion:.2f} kg CO₂e")
 
 st.write(f"Emisiones por comida: {emisiones_comida:.2f} kg CO₂e")
 st.write(f"Emisiones por bebidas/envases: {emisiones_bebidas:.2f} kg CO₂e")
